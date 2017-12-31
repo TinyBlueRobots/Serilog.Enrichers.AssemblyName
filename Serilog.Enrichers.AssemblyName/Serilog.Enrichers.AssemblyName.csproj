@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Serilog enricher for assembly information</Description>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Authors>Tiny Blue Robots</Authors>
+    <TargetFrameworks>netstandard20;net461</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Serilog.Enrichers.AssemblyName</AssemblyName>
+    <PackageId>Serilog.Enrichers.AssemblyName</PackageId>
+    <PackageTags>serilog;enrichers</PackageTags>
+    <PackageIconUrl>http://serilog.net/images/serilog-enricher-nuget.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/TinyBlueRobots/Serilog.Enrichers.AssemblyName</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/TinyBlueRobots/Serilog.Enrichers.AssemblyName</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.0.0" />
+  </ItemGroup>
+</Project>
