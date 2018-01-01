@@ -3,4 +3,6 @@
 open Expecto
 
 [<EntryPoint>]
-let main args = runTestsInAssembly defaultConfig args
+let main args =
+  Array.append args [| "--sequenced" |]
+  |> runTestsInAssembly defaultConfig
