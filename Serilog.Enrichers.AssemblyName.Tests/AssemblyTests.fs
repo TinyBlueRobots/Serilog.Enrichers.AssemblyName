@@ -25,14 +25,14 @@ let tests =
       Expect.equal assemblyName "\"Serilog.Enrichers.AssemblyName.Tests\"" "assembly name"
     }
 
-    test "assembly version" {
+    test "assembly versionspaceis 1.2.3.4" {
       let sink = setup.Value
       Log.Information "Test"
       let event = sink.Events |> Seq.head
       use output = new StringWriter()
       event.Properties.["AssemblyVersion"].Render output
       let assemblyVersion = output.ToString()
-      Expect.equal assemblyVersion "\"0.0.0.0\"" "assembly version"
+      Expect.equal assemblyVersion "\"1.2.3.4\"" "assembly version"
     }
 
   ]

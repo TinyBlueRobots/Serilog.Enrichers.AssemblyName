@@ -37,22 +37,24 @@ namespace Serilog
     /// Enrich log events with an AssemblyVersion property containing the current <see cref="AssemblyName.Version"/>.
     /// </summary>
     /// <param name="enrichmentConfiguration">Logger enrichment configuration.</param>
+    /// <param name="useSemVer">Use semantic versioning.</param>
     /// <returns>Configuration object allowing method chaining.</returns>
-    public static LoggerConfiguration WithAssemblyVersion(this LoggerEnrichmentConfiguration enrichmentConfiguration)
+    public static LoggerConfiguration WithAssemblyVersion(this LoggerEnrichmentConfiguration enrichmentConfiguration, bool useSemVer = false)
     {
       var assembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
-      return enrichmentConfiguration.WithAssemblyVersion(assembly);
+      return enrichmentConfiguration.WithAssemblyVersion(assembly, useSemVer);
     }
 
     /// <summary>
     /// Enrich log events with an AssemblyVersion property containing the current <see cref="AssemblyName.Version"/> of T.
     /// </summary>
     /// <param name="enrichmentConfiguration">Logger enrichment configuration.</param>
+    /// <param name="useSemVer">Use semantic versioning.</param>
     /// <returns>Configuration object allowing method chaining.</returns>
-    public static LoggerConfiguration WithAssemblyVersion<T>(this LoggerEnrichmentConfiguration enrichmentConfiguration)
+    public static LoggerConfiguration WithAssemblyVersion<T>(this LoggerEnrichmentConfiguration enrichmentConfiguration, bool useSemVer = false)
     {
       var assembly = typeof(T).Assembly;
-      return enrichmentConfiguration.WithAssemblyVersion(assembly);
+      return enrichmentConfiguration.WithAssemblyVersion(assembly, useSemVer);
     }
 
     static LoggerConfiguration WithAssemblyName(this LoggerEnrichmentConfiguration enrichmentConfiguration, Assembly assembly)
@@ -60,9 +62,11 @@ namespace Serilog
       return enrichmentConfiguration.WithProperty("AssemblyName", assembly.GetName().Name);
     }
 
-    static LoggerConfiguration WithAssemblyVersion(this LoggerEnrichmentConfiguration enrichmentConfiguration, Assembly assembly)
+    static LoggerConfiguration WithAssemblyVersion(this LoggerEnrichmentConfiguration enrichmentConfiguration, Assembly assembly, bool useSemVer)
     {
-      return enrichmentConfiguration.WithProperty("AssemblyVersion", assembly.GetName().Version);
+      var version = assembly.GetName().Version;
+      var versionString = useSemVer ? $"{version.Major}.{version.Minor}.{version.Build}" : $"{version}";
+      return enrichmentConfiguration.WithProperty("AssemblyVersion", versionString);
     }
   }
 }

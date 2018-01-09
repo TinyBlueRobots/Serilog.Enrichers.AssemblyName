@@ -5,8 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Sink.fs" />
-    <Compile Include="EntryAssemblyTests.fs" />
-    <Compile Include="AssemblyTests.fs" />
+    <Compile Include="*Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

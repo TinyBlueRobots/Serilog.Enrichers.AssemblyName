@@ -32,7 +32,7 @@ let tests =
       use output = new StringWriter()
       event.Properties.["AssemblyVersion"].Render output
       let assemblyVersion = output.ToString()
-      Expect.equal assemblyVersion "\"0.0.0.0\"" "assembly version"
+      Expect.equal assemblyVersion "\"1.2.3.4\"" "assembly version"
     }
 
   ]
