@@ -25,7 +25,7 @@ let tests =
       Expect.equal assemblyName "\"Serilog.Enrichers.AssemblyName.Tests\"" "assembly name"
     }
 
-    test "assembly version" {
+    test "assembly version is 1.2.3.4" {
       let sink = setup.Value
       Log.Information "Test"
       let event = sink.Events |> Seq.head

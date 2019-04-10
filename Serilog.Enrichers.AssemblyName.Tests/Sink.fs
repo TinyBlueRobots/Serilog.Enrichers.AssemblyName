@@ -7,5 +7,3 @@ type Sink() =
   member __.Events = events
   interface ILogEventSink with
     member __.Emit(logEvent) = events.Add logEvent
-
-[<System.Reflection.AssemblyVersion "1.2.3.4">] do()
