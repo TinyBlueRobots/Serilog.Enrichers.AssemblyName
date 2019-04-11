@@ -3,4 +3,5 @@ bin
 obj
 *.userprefs
 .vscode
+.vs
 *.nupkg

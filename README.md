@@ -10,7 +10,7 @@ To use the enricher, first install the NuGet package:
 Install-Package Serilog.Enrichers.AssemblyName
 ```
 
-Then, apply the enricher to you `LoggerConfiguration`:
+Then, apply the enricher to your `LoggerConfiguration`:
 
 ```csharp
 Log.Logger = new LoggerConfiguration()
@@ -26,4 +26,4 @@ The `WithAssemblyVersion()` enricher will add an `AssemblyVersion` property to p
 
 The assembly is determined by `Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly()`. If you need to specify the assembly, you can provide a type using `WithAssemblyName<T>()`.
 
-To use semantic versioning, `{version.Major}.{version.Minor}.{version.Build}`, then call `WithAssemblyVersion(true)`.
+To use semantic versioning, `{version.Major}.{version.Minor}.{version.Build}`, call `WithAssemblyVersion(true)`.
